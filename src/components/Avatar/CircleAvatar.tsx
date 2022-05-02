@@ -1,9 +1,9 @@
 import { FC, useMemo } from "react";
+import { CircleAvatarProps } from "./types";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { CircleAvatarProps } from "./types";
 
 export const CircleAvatar: FC<CircleAvatarProps> = ({ id }) => {
   

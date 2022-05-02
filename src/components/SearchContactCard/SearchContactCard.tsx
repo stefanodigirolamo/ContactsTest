@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { SearchContactCardProps } from "../types";
+import { SearchContactCardProps } from "./types";
 import { cardStyle } from "./styles";
 import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
-import { ImageAvatar } from "../ImageAvatar";
+import { ImageAvatar } from "../Avatar/ImageAvatar";
 import { SearchCardContent } from "./index";
 import { SearchCardActions } from "./index";
 

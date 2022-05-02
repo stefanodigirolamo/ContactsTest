@@ -4,7 +4,7 @@ import { customTheme } from "./utils";
 import { useContacts } from "./hooks";
 import { ThemeProvider } from "@mui/material";
 import { SearchContactCard } from "./components";
-import { Contact } from "./components";
+import { Contact } from "./utils";
 
 function App() {
   const { contacts, handleFetchList } = useContacts();
@@ -25,29 +25,27 @@ function App() {
 
   return (
     <ThemeProvider theme={customTheme}>
-      <div>
-        <div className="container">
-          <div
-            onScroll={onScroll}
-            ref={listInnerRef}
-            style={{
-              height: "100vh",
-              width: "100%",
-              overflowY: "auto",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            {contacts.map((contact: Contact) => (
-              <SearchContactCard
-                id={contact.id}
-                firstName={contact.first_name}
-                lastName={contact.last_name}
-                source={contact.avatar}
-              />
-            ))}
-          </div>
+      <div className="container">
+        <div
+          onScroll={onScroll}
+          ref={listInnerRef}
+          style={{
+            height: "100vh",
+            width: "100%",
+            overflowY: "auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {contacts.map((contact: Contact) => (
+            <SearchContactCard
+              id={contact.id}
+              firstName={contact.first_name}
+              lastName={contact.last_name}
+              source={contact.avatar}
+            />
+          ))}
         </div>
       </div>
     </ThemeProvider>

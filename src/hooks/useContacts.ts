@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { Contact } from "../components";
+import { Contact } from "../utils";
 
 export const useContacts = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);

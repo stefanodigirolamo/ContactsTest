@@ -4,13 +4,9 @@ import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Button } from "../Button";
-import { SearchContentCardProps } from "../types";
+import { SearchContentCardProps } from "./types";
 
-
-export const SearchCardContent: FC<SearchContentCardProps> = ({
-  firstName,
-  lastName,
-}) => {
+export const SearchCardContent: FC<SearchContentCardProps> = ({ firstName, lastName }) => {
   return (
     <CardContent sx={cardContentStyle}>
       <Stack direction="column" sx={{ textAlign: "start" }}>

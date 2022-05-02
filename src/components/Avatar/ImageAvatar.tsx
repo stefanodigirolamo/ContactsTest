@@ -1,14 +1,10 @@
 import { FC, useState, useMemo } from "react";
 import { ImageAvatarProps } from "./types";
 import Box from "@mui/material/Box";
+import { CircleAvatar } from "./index";
 import Avatar from "@mui/material/Avatar";
-import { CircleAvatar } from "./CircleAvatar";
 
-export const ImageAvatar: FC<ImageAvatarProps> = ({
-  source,
-  id,
-  firstName,
-}) => {
+export const ImageAvatar: FC<ImageAvatarProps> = ({ source, id, firstName }) => {
   const [isErrorImg, setIsErrorImg] = useState<boolean>(false);
 
   const avatarError = useMemo(() => {
