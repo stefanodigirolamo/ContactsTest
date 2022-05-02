@@ -1,25 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef } from "react";
+import "./App.css";
+import { customTheme } from "./utils";
+import { useContacts } from "./hooks";
+import { ThemeProvider } from "@mui/material";
+import { SearchContactCard } from "./components";
+import { Contact } from "./components";
 
 function App() {
+  const { contacts, handleFetchList } = useContacts();
+  const listInnerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    handleFetchList();
+  }, []);
+
+  const onScroll = () => {
+    if (listInnerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+      if (scrollTop + clientHeight === scrollHeight) {
+        handleFetchList();
+      }
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={customTheme}>
+      <div>
+        <div className="container">
+          <div
+            onScroll={onScroll}
+            ref={listInnerRef}
+            style={{
+              height: "100vh",
+              width: "100%",
+              overflowY: "auto",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            {contacts.map((contact: Contact) => (
+              <SearchContactCard
+                id={contact.id}
+                firstName={contact.first_name}
+                lastName={contact.last_name}
+                source={contact.avatar}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
